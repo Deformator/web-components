@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Components</title>
+    <script src="card-component.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="outer-world">
+      <admm-card
+        image-src="https://purepng.com/public/uploads/medium/purepng.com-terminatorterminatorscience-fictionactionfilmjames-cameronthe-terminatorarnold-schwarzeneggercyborgsarah-connor-17015286587567jef0.png"
+      >
+        <div slot="employee-name" class="highlighted">
+          <span>T-800</span>
+        </div>
+        <div slot="employee-position">
+          <span>Killing machine</span>
+        </div>
+      </admm-card>
+      <span id="special-content">
+        <admm-card
+          class="highlighted"
+          image-src="https://purepng.com/public/uploads/medium/purepng.com-terminatorterminatorscience-fictionactionfilmjames-cameronthe-terminatorarnold-schwarzeneggercyborgsarah-connor-17015286587567jef0.png"
+        >
+          <div slot="employee-name" class="highlighted">
+            <span>T-800</span>
+          </div>
+          <div slot="employee-position">
+            <span>Killing machine</span>
+          </div>
+        </admm-card>
+      </span>
+
+      <admm-card
+        image-src="https://purepng.com/public/uploads/medium/purepng.com-terminatorterminatorscience-fictionactionfilmjames-cameronthe-terminatorarnold-schwarzeneggercyborgsarah-connor-17015286587567jef0.png"
+      >
+        <div slot="employee-name" class="highlighted">
+          <span>T-800</span>
+        </div>
+        <div slot="employee-position">
+          <span>Killing machine</span>
+        </div>
+      </admm-card>
+    </div>
+    <script>
+      const outerWorldEl = document.querySelector("#outer-world");
+      outerWorldEl.addEventListener("cardBtnClicked", () => {
+        console.log(`Outer world received 'cardBtnClicked' event`);
+      });
+    </script>
+  </body>
+</html>
