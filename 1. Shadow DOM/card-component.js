@@ -60,3 +60,7 @@ class CardComponent extends HTMLElement {
 }
 
 customElements.define('admm-card', CardComponent);
+
+
+// test image = https://www.vanillaplus.com/wp-content/uploads/2018/04/Donald-Trump-PNG-1-720x500.png
+// test image2 = https://purepng.com/public/uploads/medium/purepng.com-donald-trumpdonald-trumpdonaldtrumppresidentpoliticsbusinessmanborn-in-queens-1701528042651zjwps.png

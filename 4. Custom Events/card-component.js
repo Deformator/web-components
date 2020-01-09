@@ -2,12 +2,12 @@ class CardComponent extends HTMLElement {
   constructor() {
     super();
 
-    this._imageSrc =
+    this.imageSrc =
       "https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png";
     this._imgEl;
     this._btnEl;
     this._innerWorld;
-    this._emitBtnClicked = this._emitBtnClicked.bind(this);
+    this._emitCustomEvent = this._emitCustomEvent.bind(this);
     this._logEvent = this._logEvent.bind(this);
 
     this.attachShadow({ mode: "open" });
@@ -72,7 +72,7 @@ class CardComponent extends HTMLElement {
     console.log("connectedCallback()");
 
     this._btnEl = this.shadowRoot.querySelector("button");
-    this._btnEl.addEventListener("click", this._emitBtnClicked);
+    this._btnEl.addEventListener("click", this._emitCustomEvent);
 
     this._innerWorld = this.shadowRoot.querySelector(".card");
     this._innerWorld.addEventListener("cardBtnClicked", this._logEvent);
@@ -80,7 +80,7 @@ class CardComponent extends HTMLElement {
     this._btnEl.addEventListener("cardBtnClicked", this._logEvent);
 
     if (this.hasAttribute("image-src")) {
-      this._imageSrc = this.getAttribute("image-src");
+      this.imageSrc = this.getAttribute("image-src");
     }
     this._render();
   }
@@ -88,7 +88,7 @@ class CardComponent extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     console.log("attributeChangedCallback()");
     if (name === "image-src") {
-      this._imageSrc = newValue;
+      this.imageSrc = newValue;
     }
 
     if (oldValue === null) {
@@ -99,7 +99,7 @@ class CardComponent extends HTMLElement {
 
   disconnectedCallback() {
     console.log("disconnectedCallback()");
-    this._btnEl.removeEventListener("click", this._emitBtnClicked);
+    this._btnEl.removeEventListener("click", this._emitCustomEvent);
     this._btnEl.removeEventListener("cardBtnClicked", this._logEvent);
     this._innerWorld.removeEventListener("cardBtnClicked", this._logEvent);
   }
@@ -110,11 +110,11 @@ class CardComponent extends HTMLElement {
 
   _render() {
     this._imgEl = this.shadowRoot.querySelector("img");
-    this._imgEl.setAttribute("src", this._imageSrc);
+    this._imgEl.setAttribute("src", this.imageSrc);
   }
 
-  _emitBtnClicked(event) {
-    console.log("_emitBtnClicked()");
+  _emitCustomEvent(event) {
+    console.log("_emitCustomEvent()");
 
     const cardBtnClicked = new Event("cardBtnClicked", {
       bubbles: true,
@@ -129,3 +129,7 @@ class CardComponent extends HTMLElement {
 }
 
 customElements.define("admm-card", CardComponent);
+
+
+// test image = https://www.vanillaplus.com/wp-content/uploads/2018/04/Donald-Trump-PNG-1-720x500.png
+// test image2 = https://purepng.com/public/uploads/medium/purepng.com-donald-trumpdonald-trumpdonaldtrumppresidentpoliticsbusinessmanborn-in-queens-1701528042651zjwps.png

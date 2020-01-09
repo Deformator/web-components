@@ -1,7 +1,7 @@
 class CardComponent extends HTMLElement {
   constructor() {
     super();
-    this._imageSrc =
+    this.imageSrc =
       'https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-74-512.png';
 
     this.attachShadow({ mode: "open" });
@@ -64,11 +64,14 @@ class CardComponent extends HTMLElement {
 
   connectedCallback() {
     if(this.hasAttribute('image-src')){
-      this._imageSrc = this.getAttribute('image-src')
+      this.imageSrc = this.getAttribute('image-src')
     }
     const imgEl = this.shadowRoot.querySelector("img");
-    imgEl.setAttribute("src", this._imageSrc);
+    imgEl.setAttribute("src", this.imageSrc);
   }
 }
 
 customElements.define("admm-card", CardComponent);
+
+// test image = https://www.vanillaplus.com/wp-content/uploads/2018/04/Donald-Trump-PNG-1-720x500.png
+// test image2 = https://purepng.com/public/uploads/medium/purepng.com-donald-trumpdonald-trumpdonaldtrumppresidentpoliticsbusinessmanborn-in-queens-1701528042651zjwps.png
